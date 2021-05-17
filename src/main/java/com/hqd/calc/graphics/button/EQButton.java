@@ -25,7 +25,7 @@ public class EQButton extends CalculatorButton {
             return expression;
         }
         BigDecimal bd = calcEngine.calcResult(expression);
-        String result = bd.toString();
+        String result = bd.toPlainString();
         //结果小于0，补上()
         if (bd.compareTo(new BigDecimal(NumberUtil.NUMBER_0)) == -1) {
             result = NumberUtil.SPECIAL_NUMBER_LEFT_BRACKET + result + NumberUtil.SPECIAL_NUMBER_RIGHT_BRACKET;
