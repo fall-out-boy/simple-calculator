@@ -6,6 +6,7 @@ import com.hqd.calc.SyntaxRule;
 import com.hqd.calc.engine.RPNCalcEngine;
 import com.hqd.calc.utils.NumberUtil;
 import com.hqd.calc.utils.OperatorUtil;
+import org.apache.commons.lang3.StringUtils;
 
 import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
@@ -20,6 +21,9 @@ public class EQButton extends CalculatorButton {
     @Override
     public String actionPerformed(ActionEvent e, CalcTextField calcTextField, SyntaxRule syntaxRule) {
         String expression = calcTextField.getText();
+        if (StringUtils.isBlank(expression)) {
+            return expression;
+        }
         BigDecimal bd = calcEngine.calcResult(expression);
         String result = bd.toString();
         //结果小于0，补上()
